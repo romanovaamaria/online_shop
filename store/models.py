@@ -1,8 +1,9 @@
 from django.db import models
 from django.urls import reverse
-
+from category.models import Category
 
 class Item(models.Model):
+    category = models.ForeignKey(Category, related_name='category_item')
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)
     image = models.ImageField(upload_to='items/%Y/%m/%d', blank=True)
@@ -21,4 +22,3 @@ class Item(models.Model):
 
     def get_absolute_url(self):
         return reverse("store:item_detail", args=[self.id, self.slug])
-    
