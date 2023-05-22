@@ -9,9 +9,9 @@ def product_list(request, category_slug):
     return render(request, 'list.html', {'products': products})
 
 
-def item_detail(request, id, slug):
+def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
     return render(request,
                   'product_detail.html',
-                  {'product': Product}
+                  {'product': product}
                   )
