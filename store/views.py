@@ -1,17 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 
-from store.models import Item
+from store.models import Product
 
 
-def item_list(request, category_slug):
+def product_list(request, category_slug):
     # cart = Cart(request)
-    items = Item.objects.filter(category=category_slug, available=True)
-    return render(request, 'list.html', {'items': items})
+    products = Product.objects.filter(category=category_slug, available=True)
+    return render(request, 'list.html', {'products': products})
 
 
 def item_detail(request, id, slug):
-    item = get_object_or_404(Item, id=id, slug=slug, available=True)
+    product = get_object_or_404(Product, id=id, slug=slug, available=True)
     return render(request,
-                  'item_detail.html',
-                  {'item': Item}
+                  'product_detail.html',
+                  {'product': Product}
                   )
