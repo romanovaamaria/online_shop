@@ -1,7 +1,6 @@
 from django.db import models
-
+from django.urls import reverse
 from store.models import Product
-
 
 class Order(models.Model):
     first_name = models.CharField(max_length=50)
